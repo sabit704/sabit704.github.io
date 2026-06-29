@@ -1,15 +1,15 @@
-# Devsuki | Game Developer Portfolio
+# Sabit | Game Developer Portfolio
 
-A modern, SaaS-inspired portfolio for **Devsuki**, a specialized Game Developer and 3D Designer.
+A modern, SaaS-inspired portfolio for **Sabit**, a specialized Game Developer and 3D Designer.
 
 ## 🚀 Key Features
-- **Modern SaaS UI:** Clean, dark-themed design with a high-end aesthetic.
+- **Minimal UI:** Clean, white-themed design with a rectangular aesthetic.
 - **Dynamic Content:** Images and videos are loaded from centralized JSON data files.
 - **Optimized Experience:** 
   - Staggered entry animations for a premium feel.
   - Interactive lightbox for full-screen image viewing.
   - Dedicated galleries for assets and video showcases.
-- **High-End Branding:** Custom favicons and unified branding under the name "Devsuki".
+- **High-End Branding:** Custom favicons and unified branding under the name "Sabit".
 - **Asset Specialty:** Showcasing a commitment to handcrafted assets (96% of featured content).
 
 ## 📁 Project Structure
@@ -23,5 +23,5 @@ A modern, SaaS-inspired portfolio for **Devsuki**, a specialized Game Developer 
 
 ## 🛠️ Tech Stack
 - **Frontend:** HTML5, CSS3 (Vanilla), JavaScript (ES6+).
-- **Design:** Modern SaaS aesthetic, typography focus (Inter font), and responsive layout.
+- **Design:** Minimal white aesthetic, typography focus (Inter font), and responsive layout.
 - **Animation:** CSS Keyframes and Cubic-Bezier easing for smooth, organic transitions.
