@@ -276,8 +276,8 @@ body {
 /* Metrics Section */
 .metrics-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
 }
 
 .metric-card {
@@ -290,7 +290,7 @@ body {
 }
 
 .metric-number {
-    font-size: 5rem;
+    font-size: 2.5rem;
     font-weight: 800;
     line-height: 1;
     margin-bottom: 16px;
@@ -301,7 +301,7 @@ body {
 .metric-number::after {
     content: '+';
     color: var(--text-secondary);
-    font-size: 3rem;
+    font-size: 1.5rem;
     margin-left: 4px;
     font-weight: 400;
 }
@@ -318,7 +318,7 @@ body {
     }
     
     .metric-number {
-        font-size: 4rem;
+        font-size: 2rem;
     }
 }
 
