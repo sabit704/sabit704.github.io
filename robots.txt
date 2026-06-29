@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sabit704.github.io/sitemap.xml
