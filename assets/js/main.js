@@ -224,6 +224,71 @@ document.addEventListener('DOMContentLoaded', () => {
         metrics.forEach(metric => observer.observe(metric));
     };
 
+    // Discord Status via Lanyard
+    const statusDot = document.getElementById('discord-status');
+    if (statusDot) {
+        const STATUS_LABELS = {
+            online: 'Online',
+            idle: 'Idle',
+            dnd: 'Do Not Disturb',
+            offline: 'Offline'
+        };
+
+        function updateStatus(status) {
+            statusDot.setAttribute('data-status', status);
+            statusDot.title = 'Discord: ' + (STATUS_LABELS[status] || status);
+        }
+
+        function fetchStatus() {
+            fetch('https://api.lanyard.rest/v1/users/727818104846942230')
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) updateStatus(data.data.discord_status);
+                })
+                .catch(() => {});
+        }
+
+        // Fetch immediately on load
+        fetchStatus();
+
+        // REST polling every 30s as baseline
+        setInterval(fetchStatus, 30000);
+
+        // WebSocket for real-time updates
+        let ws;
+        let reconnectTimeout;
+
+        function connectWS() {
+            ws = new WebSocket('wss://api.lanyard.rest/socket');
+
+            ws.onopen = () => {
+                ws.send(JSON.stringify({
+                    op: 2,
+                    d: { subscribe_id: '727818104846942230' }
+                }));
+            };
+
+            ws.onmessage = (event) => {
+                const msg = JSON.parse(event.data);
+                if (msg.op === 0 && msg.t === 'INIT_STATE') {
+                    updateStatus(msg.d.discord_status);
+                } else if (msg.op === 0 && msg.t === 'PRESENCE_UPDATE') {
+                    updateStatus(msg.d.discord_status);
+                }
+            };
+
+            ws.onclose = () => {
+                reconnectTimeout = setTimeout(connectWS, 10000);
+            };
+
+            ws.onerror = () => {
+                ws.close();
+            };
+        }
+
+        connectWS();
+    }
+
     // Initialize
     loadImages();
     loadVideos();
